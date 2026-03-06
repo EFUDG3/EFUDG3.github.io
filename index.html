@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ethan Fudge | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #050810;
+      --bg-alt: #0b0f1a;
+      --fg: #e5f0ff;
+      --muted: #7d8ca3;
+      --accent: #4ade80;
+      --border: #1f2933;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-mono);
+      background: radial-gradient(circle at top, #111827 0, #020617 45%, #000 100%);
+      color: var(--fg);
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1.5rem 3rem;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .shell {
+      width: 100%;
+      max-width: 960px;
+      background: linear-gradient(145deg, var(--bg), #020617);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow:
+        0 0 0 1px rgba(15, 23, 42, 0.9),
+        0 24px 60px rgba(0, 0, 0, 0.75);
+      overflow: hidden;
+    }
+    .shell-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 1rem;
+      background: linear-gradient(90deg, #020617, #020617 40%, #030712);
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .dots { display: flex; gap: 0.4rem; }
+    .dot { width: 10px; height: 10px; border-radius: 999px; }
+    .dot.red { background: #f87171; }
+    .dot.yellow { background: #facc15; }
+    .dot.green { background: #4ade80; }
+    .shell-title { opacity: 0.85; }
+    .nav { display: flex; gap: 0.75rem; font-size: 0.8rem; }
+    .nav a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 0.15rem 0.4rem;
+      border-radius: 999px;
+      transition: color 0.15s ease, background-color 0.15s ease;
+    }
+    .nav a:hover {
+      color: var(--accent);
+      background: rgba(74, 222, 128, 0.08);
+    }
+    .shell-body {
+      padding: 1.25rem 1.5rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .prompt-label {
+      color: var(--muted);
+      font-size: 0.8rem;
+      margin-bottom: 0.25rem;
+    }
+    .prompt-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: baseline;
+      font-size: 0.95rem;
+    }
+    .prompt-path { color: var(--accent); }
+    .prompt-cmd { color: #e5e7eb; }
+    .hero-main { margin-top: 0.5rem; }
+    .hero-title {
+      font-size: clamp(1.8rem, 3vw, 2.2rem);
+      font-weight: 600;
+      margin: 0 0 0.4rem;
+    }
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--muted);
+      max-width: 50rem;
+      line-height: 1.7;
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.75rem;
+    }
+    .tag {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 0.18rem 0.55rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.7);
+    }
+    .links-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+      font-size: 0.82rem;
+    }
+    .links-row a {
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #020617;
+    }
+    section {
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      padding: 1rem 1rem 1.1rem;
+      background: linear-gradient(135deg, var(--bg-alt), #020617);
+    }
+    section + section { margin-top: 0.5rem; }
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+      color: var(--muted);
+    }
+    .section-heading span.command { color: var(--accent); }
+    .section-body {
+      font-size: 0.9rem;
+      color: #d1d5db;
+      line-height: 1.7;
+    }
+    .stack-line {
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .exp-item + .exp-item { margin-top: 0.75rem; }
+    .exp-role {
+      font-weight: 500;
+      color: #e5e7eb;
+      font-size: 0.95rem;
+    }
+    .exp-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .exp-item ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+      font-size: 0.85rem;
+    }
+    .exp-item li::before {
+      content: "▹";
+      color: var(--accent);
+      margin-right: 0.45rem;
+    }
+    .proj-item + .proj-item { margin-top: 0.75rem; }
+    .proj-title {
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+    }
+    .proj-title a { color: #e5e7eb; text-decoration: none; }
+    .proj-title a:hover { color: var(--accent); }
+    .proj-tagline {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .proj-desc {
+      font-size: 0.85rem;
+      margin-top: 0.3rem;
+      color: #d1d5db;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.35rem;
+      font-size: 0.85rem;
+    }
+    .contact-grid code {
+      background: #020617;
+      border-radius: 999px;
+      padding: 0.18rem 0.5rem;
+      border: 1px solid var(--border);
+    }
+    .cursor {
+      display: inline-block;
+      width: 7px;
+      height: 1rem;
+      background: var(--accent);
+      margin-left: 4px;
+      animation: blink 1s step-end infinite;
+      vertical-align: text-bottom;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+    @media (max-width: 640px) {
+      .shell-body { padding: 1rem 0.9rem 1.3rem; }
+      .nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="shell-header">
+      <div class="dots">
+        <div class="dot red"></div>
+        <div class="dot yellow"></div>
+        <div class="dot green"></div>
+      </div>
+      <div class="shell-title">ethan@portfolio: ~</div>
+      <nav class="nav">
+        <a href="#about">about</a>
+        <a href="#experience">experience</a>
+        <a href="#projects">projects</a>
+        <a href="#contact">contact</a>
+      </nav>
+    </header>
+
+    <div class="shell-body">
+      <!-- HERO -->
+      <section aria-label="Intro">
+        <div class="prompt-label">terminal</div>
+        <div class="prompt-line">
+          <span class="prompt-path">ethan@portfolio:~$</span>
+          <span class="prompt-cmd">whoami</span>
+        </div>
+        <div class="hero-main">
+          <h1 class="hero-title">
+            Ethan Fudge<span class="cursor"></span>
+          </h1>
+          <p class="hero-subtitle">
+            CS major, Vice President of the SDSU AI Club, and IT Systems Administrator at Star Flooring.
+            I like building clean, minimal tools and interfaces that feel like a good terminal &mdash;
+            simple on the surface, powerful underneath.
+          </p>
+          <div class="hero-tags">
+            <span class="tag">CS @ SDSU</span>
+            <span class="tag">AI &amp; systems</span>
+            <span class="tag">terminal aesthetics</span>
+          </div>
+          <div class="links-row">
+            <a href="https://github.com/EFUDG3" target="_blank" rel="noreferrer">github</a>
+            <a href="assets/EthanFudge_Resume_2026.pdf" target="_blank" rel="noreferrer">resume.pdf</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" aria-label="About">
+        <div class="section-heading">
+          <span class="prompt-path">ethan@portfolio:~$</span>
+          <span class="command">cat about.txt</span>
+        </div>
+        <div class="section-body">
+          I’m a computer science major who likes working where applied AI, infrastructure, and clean UX overlap.
+          At SDSU, I help run the AI Club and get more students from “this model is cool” to actually shipping
+          things with it.
+          <br /><br />
+          Outside of school, I work as an IT Systems Administrator at Star Flooring, keeping the company’s systems
+          healthy, solving whatever breaks, and quietly automating away repetitive tasks.
+          <div class="stack-line">
+            current focus =&gt; AI tooling, backend systems, infra, and minimal, text‑first interfaces.
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience" aria-label="Experience">
+        <div class="section-heading">
+          <span class="prompt-path">ethan@portfolio:~$</span>
+          <span class="command">ls experience/</span>
+        </div>
+        <div class="section-body">
+          <div class="exp-item">
+            <div class="exp-role">Vice President — SDSU AI Club</div>
+            <div class="exp-meta">2024 — present · San Diego State University</div>
+            <ul>
+              <li>Organize and run AI workshops, demos, and hack nights for students.</li>
+              <li>Help members go from “trying ChatGPT” to building and shipping AI‑powered projects.</li>
+              <li>Coordinate speakers, events, and collaborations with other student organizations.</li>
+            </ul>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-role">IT Systems Administrator — Star Flooring</div>
+            <div class="exp-meta">2023 — present</div>
+            <ul>
+              <li>Maintain and troubleshoot company systems, networking, and core applications.</li>
+              <li>Automate recurring IT tasks and improve internal tooling for non‑technical staff.</li>
+              <li>Focus on uptime, reliability, and security for day‑to‑day operations.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" aria-label="Projects">
+        <div class="section-heading">
+          <span class="prompt-path">ethan@portfolio:~$</span>
+          <span class="command">ls projects/</span>
+        </div>
+        <div class="section-body">
+          <div class="proj-item">
+            <div class="proj-title">
+              <a href="#" target="_blank" rel="noreferrer">club-hub</a>
+              <span class="proj-tagline">· campus club discovery &amp; engagement</span>
+            </div>
+            <p class="proj-desc">
+              A web app that makes it easier for students to discover, join, and stay engaged with
+              campus clubs. Focused on a low‑friction UX and clean, maintainable code.
+            </p>
+          </div>
+
+          <!-- Add more projects here later -->
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" aria-label="Contact">
+        <div class="section-heading">
+          <span class="prompt-path">ethan@portfolio:~$</span>
+          <span class="command">./contact.sh</span>
+        </div>
+        <div class="section-body">
+          <p style="margin-bottom: 0.7rem;">
+            If you want to chat about AI, systems, or have something you think I’d be a good fit for, feel free to reach out.
+          </p>
+          <div class="contact-grid">
+            <div>
+              <code>email&nbsp;&rarr; <a href="mailto:ethantfudge@gmail.com">ethantfudge@gmail.com</a></code>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
