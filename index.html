@@ -7,13 +7,13 @@
   <style>
     :root {
       --bg: #060608;
-      --surface: rgba(8, 8, 10, 0.72);
-      --fg: #f0ece6;
-      --muted: #7a7570;
-      --accent: #d8d0c4;
-      --accent-bright: #f8f5f0;
-      --border: rgba(255, 255, 255, 0.07);
-      --border-hover: rgba(255, 255, 255, 0.16);
+      --surface: rgba(12, 12, 15, 0.82);
+      --fg: #f5f2ee;
+      --muted: #9a9590;
+      --accent: #e8e0d4;
+      --accent-bright: #faf8f5;
+      --border: rgba(255, 255, 255, 0.09);
+      --border-hover: rgba(255, 255, 255, 0.2);
       --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       --mouse-x: 50vw;
       --mouse-y: 50vh;
@@ -143,7 +143,7 @@
 
     .hero-subtitle {
       font-size: 0.93rem;
-      color: #8a8580;
+      color: #a8a49e;
       max-width: 52rem;
       line-height: 1.85;
       margin-bottom: 1.1rem;
@@ -157,11 +157,11 @@
     }
     .tag {
       border-radius: 999px;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(255,255,255,0.12);
       padding: 0.2rem 0.65rem;
       font-size: 0.72rem;
-      color: #4a4540;
-      background: rgba(255,255,255,0.015);
+      color: #9a9590;
+      background: rgba(255,255,255,0.04);
       letter-spacing: 0.04em;
     }
 
@@ -174,9 +174,9 @@
     .links-row a {
       padding: 0.28rem 0.75rem;
       border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.02);
-      color: #5a5550;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.03);
+      color: #8a8580;
       transition: color 0.2s, border-color 0.2s, background 0.2s;
     }
     .links-row a:hover {
@@ -209,7 +209,7 @@
 
     .section-body {
       font-size: 0.87rem;
-      color: #9a9590;
+      color: #b8b4ae;
       line-height: 1.85;
     }
 
@@ -217,7 +217,7 @@
     .about-focus {
       margin-top: 1rem;
       font-size: 0.8rem;
-      color: #3a3530;
+      color: #7a7570;
       display: flex;
       gap: 0.4rem;
     }
@@ -244,7 +244,7 @@
     .exp-item ul { list-style: none; padding: 0; }
     .exp-item li {
       font-size: 0.83rem;
-      color: #7a7570;
+      color: #9a9590;
       line-height: 1.75;
       padding-left: 1.1rem;
       position: relative;
@@ -267,7 +267,7 @@
       border: 1px solid var(--border);
       background: rgba(255,255,255,0.018);
       font-size: 0.76rem;
-      color: #7a7570;
+      color: #9a9590;
       transition: border-color 0.2s, background 0.2s, color 0.2s;
     }
     .skill-chip:hover {
@@ -315,7 +315,7 @@
     }
     .proj-link:hover { color: var(--accent-bright); border-color: var(--border-hover); }
     .proj-tagline { font-size: 0.71rem; color: var(--muted); margin-bottom: 0.5rem; }
-    .proj-desc { font-size: 0.81rem; color: #7a7570; line-height: 1.75; }
+    .proj-desc { font-size: 0.81rem; color: #9a9590; line-height: 1.75; }
 
     /* ── MUSIC ── */
     .sc-embed {
@@ -490,10 +490,17 @@
             <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"/>JavaScript</div>
             <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"/>HTML / CSS</div>
             <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"/>Git</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"/>GitHub</div>
             <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux"/>Linux</div>
             <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="Bash"/>Bash / Shell</div>
             <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code"/>VS Code / Cursor</div>
             <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="Azure"/>Azure</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"/>MySQL</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL"/>PostgreSQL</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js"/>Node.js</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"/>React</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"/>Docker</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg" alt="Windows"/>Windows Server</div>
           </div>
         </div>
       </section>
@@ -530,7 +537,7 @@
         </div>
         <div class="sc-embed">
           <iframe
-            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/ethan-fudge-534845318/fudg3fk&color=%23c8bfb0&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"
+            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/ethan-fudge-534845318&color=%23c8bfb0&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"
             height="166"
             scrolling="no"
             allow="autoplay"
@@ -548,8 +555,8 @@
           <p style="margin-bottom: 0.9rem;">
             If you want to talk AI, systems, or have something I'd be a good fit for — reach out.
           </p>
-          <a class="email-btn" href="mailto:ethantfudge@gmail.com">
-            ethantfudge@gmail.com →
+          <a class="email-btn" href="/cdn-cgi/l/email-protection#dbbeafb3bab5afbdaebfbcbe9bbcb6bab2b7f5b8b4b6">
+            <span class="__cf_email__" data-cfemail="1673627e777862706372717356717b777f7a3875797b">[email&#160;protected]</span> →
           </a>
         </div>
       </section>
@@ -561,11 +568,4 @@
     </footer>
   </div>
 
-  <script>
-    document.addEventListener('mousemove', e => {
-      document.documentElement.style.setProperty('--mouse-x', e.clientX + 'px');
-      document.documentElement.style.setProperty('--mouse-y', e.clientY + 'px');
-    });
-  </script>
-</body>
-</html>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
