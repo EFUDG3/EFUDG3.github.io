@@ -8,10 +8,10 @@
     :root {
       --bg: #060608;
       --surface: rgba(12, 12, 15, 0.82);
-      --fg: #f8f6f2;
-      --muted: #b8b4ae;
-      --accent: #ede8e0;
-      --accent-bright: #ffffff;
+      --fg: #f5f2ee;
+      --muted: #9a9590;
+      --accent: #e8e0d4;
+      --accent-bright: #faf8f5;
       --border: rgba(255, 255, 255, 0.09);
       --border-hover: rgba(255, 255, 255, 0.2);
       --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -367,6 +367,44 @@
     }
     @keyframes blink { 50% { opacity: 0; } }
 
+    .proj-wip {
+      font-size: 0.68rem;
+      color: #a89880;
+      border: 1px solid rgba(168,152,128,0.3);
+      padding: 0.1rem 0.45rem;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── INK SPLASH ── */
+    .ink-splash {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%) scale(0);
+      background: radial-gradient(circle, rgba(255,252,248,0.18) 0%, rgba(200,190,176,0.08) 40%, transparent 70%);
+      animation: ink-expand 0.7s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+    }
+    @keyframes ink-expand {
+      0%   { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+      60%  { opacity: 0.6; }
+      100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+    }
+
+    /* ── CURSOR TRAIL ── */
+    .cursor-dot {
+      position: fixed;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(240,236,230,0.5);
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.3s;
+    }
+
     /* ── FOOTER ── */
     .shell-footer {
       position: relative;
@@ -430,6 +468,7 @@
 
         <div class="links-row">
           <a href="https://github.com/EFUDG3" target="_blank" rel="noreferrer">↗ github</a>
+          <a href="https://www.linkedin.com/in/ethan-fudg3/" target="_blank" rel="noreferrer">↗ linkedin</a>
           <a href="assets/EthanFudge_Resume_2026.pdf" target="_blank" rel="noreferrer">↓ resume.pdf</a>
         </div>
       </div>
@@ -521,6 +560,14 @@
               <div class="proj-tagline">campus club discovery &amp; engagement</div>
               <div class="proj-desc">Web app making it easier for students to discover, join, and stay engaged with campus clubs. Low-friction UX, clean and maintainable code.</div>
             </div>
+            <div class="proj-card">
+              <div class="proj-title-row">
+                <div class="proj-name">blueprint-analyzer</div>
+                <span class="proj-wip">⬡ in progress</span>
+              </div>
+              <div class="proj-tagline">AI-powered floor plan analysis · Star Flooring</div>
+              <div class="proj-desc">Tool that ingests construction blueprints and extracts flooring measurements, room dimensions, and material estimates — cutting down manual takeoff time for the team.</div>
+            </div>
           </div>
         </div>
       </section>
@@ -537,7 +584,7 @@
         </div>
         <div class="sc-embed">
           <iframe
-            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/ethan-fudge-534845318/fudg3fk&color=%23c8bfb0&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"
+            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/ethan-fudge-534845318&color=%23c8bfb0&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"
             height="166"
             scrolling="no"
             allow="autoplay"
@@ -568,4 +615,53 @@
     </footer>
   </div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
+    // mouse glow background
+    document.addEventListener('mousemove', e => {
+      document.documentElement.style.setProperty('--mouse-x', e.clientX + 'px');
+      document.documentElement.style.setProperty('--mouse-y', e.clientY + 'px');
+    });
+
+    // ink splash on click
+    document.addEventListener('click', e => {
+      const splash = document.createElement('div');
+      splash.className = 'ink-splash';
+      const size = 120 + Math.random() * 160;
+      splash.style.width = size + 'px';
+      splash.style.height = size + 'px';
+      splash.style.left = e.clientX + 'px';
+      splash.style.top = e.clientY + 'px';
+      document.body.appendChild(splash);
+      splash.addEventListener('animationend', () => splash.remove());
+    });
+
+    // trailing dot particles
+    const trail = [];
+    const TRAIL_LEN = 10;
+    for (let i = 0; i < TRAIL_LEN; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'cursor-dot';
+      dot.style.opacity = (1 - i / TRAIL_LEN) * 0.5;
+      dot.style.width = (5 - i * 0.3) + 'px';
+      dot.style.height = (5 - i * 0.3) + 'px';
+      document.body.appendChild(dot);
+      trail.push({ el: dot, x: -100, y: -100 });
+    }
+
+    let mouse = { x: -100, y: -100 };
+    document.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+
+    function animateTrail() {
+      let px = mouse.x, py = mouse.y;
+      trail.forEach(pt => {
+        pt.el.style.left = px + 'px';
+        pt.el.style.top  = py + 'px';
+        const nx = px + (pt.x - px) * 0.45;
+        const ny = py + (pt.y - py) * 0.45;
+        pt.x = px; pt.y = py;
+        px = nx; py = ny;
+      });
+      requestAnimationFrame(animateTrail);
+    }
+    animateTrail();
+  </script>
