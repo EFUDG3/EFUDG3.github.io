@@ -8,12 +8,12 @@
     :root {
       --bg: #060608;
       --surface: rgba(12, 12, 15, 0.82);
-      --fg: #f5f2ee;
-      --muted: #9a9590;
-      --accent: #e8e0d4;
-      --accent-bright: #faf8f5;
-      --border: rgba(255, 255, 255, 0.09);
-      --border-hover: rgba(255, 255, 255, 0.2);
+      --fg: #ffffff;
+      --muted: #b0acaa;
+      --accent: #e8e4e0;
+      --accent-bright: #ffffff;
+      --border: rgba(255, 255, 255, 0.1);
+      --border-hover: rgba(255, 255, 255, 0.25);
       --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       --mouse-x: 50vw;
       --mouse-y: 50vh;
@@ -143,7 +143,7 @@
 
     .hero-subtitle {
       font-size: 0.93rem;
-      color: #a8a49e;
+      color: #c8c4c0;
       max-width: 52rem;
       line-height: 1.85;
       margin-bottom: 1.1rem;
@@ -157,11 +157,11 @@
     }
     .tag {
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
       padding: 0.2rem 0.65rem;
       font-size: 0.72rem;
-      color: #9a9590;
-      background: rgba(255,255,255,0.04);
+      color: #c8c4c0;
+      background: rgba(255,255,255,0.06);
       letter-spacing: 0.04em;
     }
 
@@ -174,9 +174,9 @@
     .links-row a {
       padding: 0.28rem 0.75rem;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.03);
-      color: #8a8580;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.07);
+      color: #ffffff;
       transition: color 0.2s, border-color 0.2s, background 0.2s;
     }
     .links-row a:hover {
@@ -209,7 +209,7 @@
 
     .section-body {
       font-size: 0.87rem;
-      color: #b8b4ae;
+      color: #c8c4c0;
       line-height: 1.85;
     }
 
@@ -217,7 +217,7 @@
     .about-focus {
       margin-top: 1rem;
       font-size: 0.8rem;
-      color: #7a7570;
+      color: #9a9590;
       display: flex;
       gap: 0.4rem;
     }
@@ -244,7 +244,7 @@
     .exp-item ul { list-style: none; padding: 0; }
     .exp-item li {
       font-size: 0.83rem;
-      color: #9a9590;
+      color: #b8b4b0;
       line-height: 1.75;
       padding-left: 1.1rem;
       position: relative;
@@ -267,7 +267,7 @@
       border: 1px solid var(--border);
       background: rgba(255,255,255,0.018);
       font-size: 0.76rem;
-      color: #9a9590;
+      color: #c0bcb8;
       transition: border-color 0.2s, background 0.2s, color 0.2s;
     }
     .skill-chip:hover {
@@ -315,7 +315,7 @@
     }
     .proj-link:hover { color: var(--accent-bright); border-color: var(--border-hover); }
     .proj-tagline { font-size: 0.71rem; color: var(--muted); margin-bottom: 0.5rem; }
-    .proj-desc { font-size: 0.81rem; color: #9a9590; line-height: 1.75; }
+    .proj-desc { font-size: 0.81rem; color: #b8b4b0; line-height: 1.75; }
 
     /* ── MUSIC ── */
     .sc-embed {
@@ -374,22 +374,6 @@
       padding: 0.1rem 0.45rem;
       border-radius: 999px;
       letter-spacing: 0.04em;
-    }
-
-    /* ── INK SPLASH ── */
-    .ink-splash {
-      position: fixed;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%) scale(0);
-      background: radial-gradient(circle, rgba(255,252,248,0.18) 0%, rgba(200,190,176,0.08) 40%, transparent 70%);
-      animation: ink-expand 0.7s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
-    }
-    @keyframes ink-expand {
-      0%   { transform: translate(-50%, -50%) scale(0); opacity: 1; }
-      60%  { opacity: 0.6; }
-      100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
     }
 
     /* ── CURSOR TRAIL ── */
@@ -602,9 +586,7 @@
           <p style="margin-bottom: 0.9rem;">
             If you want to talk AI, systems, or have something I'd be a good fit for — reach out.
           </p>
-          <a class="email-btn" href="/cdn-cgi/l/email-protection#dbbeafb3bab5afbdaebfbcbe9bbcb6bab2b7f5b8b4b6">
-            <span class="__cf_email__" data-cfemail="1673627e777862706372717356717b777f7a3875797b">[email&#160;protected]</span> →
-          </a>
+          <a class="email-btn" id="email-btn">ethantfudge@gmail.com →</a>
         </div>
       </section>
 
@@ -620,19 +602,6 @@
     document.addEventListener('mousemove', e => {
       document.documentElement.style.setProperty('--mouse-x', e.clientX + 'px');
       document.documentElement.style.setProperty('--mouse-y', e.clientY + 'px');
-    });
-
-    // ink splash on click
-    document.addEventListener('click', e => {
-      const splash = document.createElement('div');
-      splash.className = 'ink-splash';
-      const size = 120 + Math.random() * 160;
-      splash.style.width = size + 'px';
-      splash.style.height = size + 'px';
-      splash.style.left = e.clientX + 'px';
-      splash.style.top = e.clientY + 'px';
-      document.body.appendChild(splash);
-      splash.addEventListener('animationend', () => splash.remove());
     });
 
     // trailing dot particles
@@ -664,4 +633,10 @@
       requestAnimationFrame(animateTrail);
     }
     animateTrail();
+
+    // build email link to avoid spam scrapers
+    const eb = document.getElementById('email-btn');
+    const e = 'ethantfudge' + '@' + 'gmail.com';
+    eb.href = 'mailto:' + e;
+    eb.textContent = e + ' →';
   </script>
