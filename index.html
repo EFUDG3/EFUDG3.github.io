@@ -47,31 +47,6 @@
       mix-blend-mode: luminosity;
     }
 
-    /* cursor glow reveals marble */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(ellipse 600px 400px at var(--mouse-x) var(--mouse-y),
-        rgba(255,252,248,0.055) 0%, transparent 65%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { color: var(--accent-bright); }
-
-    .shell {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 1160px;
-      margin: 0 auto;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
     /* ── HEADER ── */
     .shell-header {
       position: sticky;
