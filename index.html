@@ -372,6 +372,26 @@
     }
     @keyframes blink { 50% { opacity: 0; } }
 
+    .email-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(34,197,94,0.3);
+      background: rgba(34,197,94,0.06);
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      transition: background 0.15s, border-color 0.15s;
+      text-decoration: none;
+    }
+    .email-btn:hover {
+      background: rgba(34,197,94,0.12);
+      border-color: rgba(34,197,94,0.5);
+      text-decoration: none;
+    }
+
     /* ── FOOTER ── */
     .shell-footer {
       position: relative;
@@ -569,8 +589,8 @@
         </div>
         <div class="sc-embed">
           <iframe
-            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/ethan-fudge-534845318&color=%2322c55e&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
-            height="300"
+            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/ethan-fudge-534845318&color=%2322c55e&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"
+            height="166"
             scrolling="no"
             allow="autoplay"
           ></iframe>
@@ -587,9 +607,9 @@
           <p style="margin-bottom: 0.85rem; color: #6d8094;">
             If you want to talk AI, systems, or have something I'd be a good fit for — reach out.
           </p>
-          <div class="contact-line">
-            email → <a href="/cdn-cgi/l/email-protection#1570617d747b617360717270557278747c793b767a78"><span class="__cf_email__" data-cfemail="bdd8c9d5dcd3c9dbc8d9dad8fddad0dcd4d193ded2d0">[email&#160;protected]</span></a>
-          </div>
+          <a class="email-btn" href="mailto:ethantfudge@gmail.com">
+            ethantfudge@gmail.com →
+          </a>
         </div>
       </section>
 
